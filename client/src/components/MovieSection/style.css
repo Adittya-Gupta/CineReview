@@ -1,0 +1,10 @@
+.mainstyle{
+    /* background-color: aliceblue; */
+    width: 75%;
+    margin-left: 5%;
+}
+
+.cardsarea{
+    display: flex;
+    flex-direction: row;
+}
