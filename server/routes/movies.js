@@ -7,5 +7,4 @@ router.get('/', getmovies);
 
 router.post('/', createmovies);
 
-
 export default router;

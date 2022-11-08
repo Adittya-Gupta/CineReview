@@ -1,17 +1,46 @@
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useState } from "react";
+import Toast from 'react-bootstrap/Toast';
 import "./style.css";
 const LoginPage = () => {
+  const [showA, setShowA] = useState(false);
+  const toggleShowA = () => setShowA(!showA);
     const handleSubmit = (e) => {
         e.preventDefault();
-        const email = document.getElementById("email").value;
+        const name = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-        const data = {email, password};
-        axios.post("http://localhost:8080/users/login", data)
+        const data = {name, password};
+        axios.post("http://localhost:8080/users/login", data).then((res)=>{
+          toggleShowA()
+          document.querySelector(".mytoast").innerHTML = res.data;
+          // if(res.data==="Success"){
+          //   toggleShowA()
+          // }
+          // else if(res.data==="Wrong password"){
+
+          // }
+          // else{
+
+          // }
+        })
     }
   return (
-    <Form className="myForm">
+    <div>
+      <Toast show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+          </Toast.Header>
+          <Toast.Body className="mytoast"></Toast.Body>
+        </Toast>
+      <Form className="myForm">
         <h1 className="mytext">Admin Login</h1>
       <Form.Group className="mb-3">
         <Form.Label className="mytext">Email address</Form.Label>
@@ -26,6 +55,8 @@ const LoginPage = () => {
         Submit
       </Button>
     </Form>
+    </div>
+    
   );
 };
 
