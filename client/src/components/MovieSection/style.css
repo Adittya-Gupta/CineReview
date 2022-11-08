@@ -6,5 +6,10 @@
 
 .cardsarea{
     display: flex;
+    flex-direction: column;
+}
+
+.myrow{
+    display: flex;
     flex-direction: row;
 }

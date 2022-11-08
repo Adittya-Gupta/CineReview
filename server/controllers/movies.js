@@ -3,9 +3,10 @@ import Movie from "../models/movie.js";
 export const getmovies = async (req, res) => {
     try{
         const movies = await Movie.find();
-        console.log(movies);
+        movies.sort((a, b) => (a.rating < b.rating) ? 1 : -1)
+        // console.log(movies);
         res.status(200).json(movies);
-        res.send('THIS WORKS!'); 
+        // res.send('THIS WORKS!'); 
     }
     catch(error){
         res.status(404).json({message: error.message});

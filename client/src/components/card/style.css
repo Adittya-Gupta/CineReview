@@ -1,7 +1,7 @@
 .mystylecard{
     margin: 10px;
     margin-top: 20px;
-    background-color: #1c1a23;
+    background-color: #1c1a23 !important;
     color: white;
 }
 
@@ -11,4 +11,16 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.rating{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.year{
+    position: absolute;
+    right: 0;
+    top: 0;
 }
