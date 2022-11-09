@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get('/', getmovies);
 
-router.post('/', createmovies);
+router.post('/add', createmovies);
 
 export default router;

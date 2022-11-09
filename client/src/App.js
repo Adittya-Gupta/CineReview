@@ -8,6 +8,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignUp from "./components/Signup/Signup";
+import AddMovie from "./components/addMovie/addMovie";
 function App() {
   const [movies, setMovies] = useState("");
   const url = "http://localhost:8080/movies";
@@ -35,6 +36,7 @@ function App() {
           />
           <Route path="/login" element={<LoginPage></LoginPage>}/>
           <Route path="/signup" element={<SignUp></SignUp>}/>
+          <Route path="/addmovie" element={<AddMovie></AddMovie>}/>
         </Routes>
       </BrowserRouter>
     </div>

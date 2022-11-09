@@ -1,5 +1,4 @@
 import User from '../models/user.js';
-
 export const createUser = async (req, res) => {
     const user = req.body;
     const newUser = new User(user);
@@ -18,11 +17,13 @@ export const validateUser = async (req, res) =>{
             if(err) res.send(err);
             else{
                 if(doc){
-                    if(doc.password === cred.password ) res.send("Success")
-                    else res.send("Wrong password")
+                    if(doc.password === cred.password ) {
+                        res.json({data: 'Success'});
+                    }
+                    else res.json({data: "Wrong password"})
                 }
                 else{
-                    res.send("No such Username exist")
+                    res.json({data: "No such Username exist"})
                 }
             }
         })

@@ -1,9 +1,10 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import "./style.css"
 const Nvbr = () => {
+  var login = window.localStorage.getItem("isLoggedIn");
   let navigate = useNavigate(); 
   const routeChangelogin = () =>{ 
     let path = `/login`; 
@@ -13,6 +14,29 @@ const Nvbr = () => {
     let path = `/signup`;
     navigate(path);
   }
+  const routeChangesignout = ()=>{
+    let path = `/`;
+    window.localStorage.removeItem("isLoggedIn");
+    navigate(path);
+  }
+  const routeChangeaddmovie = ()=>{
+    let path = `/addmovie`;
+    navigate(path, {state : {login : true}});
+  }
+  if(login){
+    return ( 
+      <Navbar expand="lg" className="MainNav">
+        <Container fluid>
+          <Navbar.Brand href="/" className="my-title">CineReview</Navbar.Brand>
+          <div>
+          <Button variant="outline-success" onClick={routeChangeaddmovie}>Add a new Movie</Button>{' '}
+          <Button variant="outline-danger" onClick={routeChangesignout}>Sign Out</Button>{' '}
+          </div>
+        </Container>
+      </Navbar>
+    );
+  }
+  else{
   return ( 
     <Navbar expand="lg" className="MainNav">
       <Container fluid>
@@ -24,7 +48,7 @@ const Nvbr = () => {
         </div>
       </Container>
     </Navbar>
-  );
+  );}
 }
  
 export default Nvbr;

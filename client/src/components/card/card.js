@@ -5,10 +5,8 @@ import "./style.css";
 const MyCard = (prop) => {
   return (
     <Card style={{ width: "30%" }} className="mystylecard">
-      <Card.ImgOverlay>
       <Badge pill bg="success" className="rating">{"IMDB rating : " + prop.movie.rating}</Badge>{' '}
       <Badge pill bg="info" className="year">{prop.movie.year}</Badge>{' '}
-      </Card.ImgOverlay>
       <Card.Img
         variant="top"
         src={prop.movie.image}

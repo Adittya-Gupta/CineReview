@@ -23,8 +23,6 @@ export const createmovies = (req, res) => {
     } catch(error){
         res.status(409).json({message: error.message});
     }
-
-    res.send('POST REQUEST WORKS!');
 }
 
 
