@@ -5,13 +5,14 @@ import { useState } from "react";
 const MovieSection = (props) => {
     // console.log(props.movies)
     const [term, setTerm] = useState('');
+    let searchgenre = props.searchgenre;
     let movies = props.movies;
     if (term==='') {
-        movies = props.movies;
-        console.log("hello")
+        movies = Object.values(props.movies)
+    .filter((key) => (key.genre.toLowerCase().includes(searchgenre.toLowerCase())));
     } else {
     movies = Object.values(props.movies)
-    .filter((key) => key.title.toLowerCase().includes(term.toLowerCase()))
+    .filter((key) => (key.title.toLowerCase().includes(term.toLowerCase()) && key.genre.toLowerCase().includes(searchgenre.toLowerCase())));
     }
     let arr = [[]]
     for (let i = 0; i < movies.length; i+=3) {
@@ -28,9 +29,9 @@ const MovieSection = (props) => {
             </div>
             <div className="cardsarea">
                 {arr.map((row)=>{
-                    return <div className="myrow">
+                    return <div className="myrow" key = {row}>
                         {row.map((movie)=>{
-                            return <MyCard movie={movie}></MyCard>
+                            return <MyCard movie={movie} key = {movie.title}></MyCard>
                         })}
                     </div>
                 })}

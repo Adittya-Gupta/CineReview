@@ -10,6 +10,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import SignUp from "./components/Signup/Signup";
 import AddMovie from "./components/addMovie/addMovie";
 function App() {
+  const [searchgenre, setSearchgenre] = useState('');
   const [movies, setMovies] = useState("");
   const url = "http://localhost:8080/movies";
   const getMovies = async () => {
@@ -29,8 +30,8 @@ function App() {
             path="/"
             element={
               <div className="main-content">
-                <FilterSection></FilterSection>
-                <MovieSection movies={movies}></MovieSection>
+                <FilterSection searchgenre = {searchgenre} setSearchgenre = {setSearchgenre}></FilterSection>
+                <MovieSection movies={movies} searchgenre={searchgenre} setSearchgenre = {setSearchgenre}></MovieSection>
               </div>
             }
           />

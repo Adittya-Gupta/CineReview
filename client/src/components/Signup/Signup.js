@@ -2,15 +2,25 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./style.css";
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
+  let navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        const name = document.getElementById("name").value;
+        const username = document.getElementById("name").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-        const data = {name, email, password};
+        const data = {username, email, password};
         console.log(data);
-        axios.post("http://localhost:8080/users/signup", data)
+        axios.post("http://localhost:8080/users/signup", data).then((res)=>{
+          window.localStorage.setItem("isLoggedIn", true);
+          window.localStorage.setItem("username", username);
+          navigate('/',{replace: true})
+        }).catch((err)=>{
+            if(err.response.status === 409){
+                alert("There is already an account with this Username, please try again with a different Username");
+            }
+        })
     }
   return (
     <Form className="myForm">

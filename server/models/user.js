@@ -1,6 +1,6 @@
 import Mongoose from "mongoose";
 const UserSchema = new Mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true,
         unique: true,
@@ -12,7 +12,6 @@ const UserSchema = new Mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 6,
     },
 });
 const User = Mongoose.model('User', UserSchema);

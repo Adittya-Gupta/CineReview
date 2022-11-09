@@ -13,10 +13,11 @@ const LoginPage = () => {
         axios.post("http://localhost:8080/users/login", data).then((res)=>{
           if(res.data.data==="Success"){
               window.localStorage.setItem("isLoggedIn", true);
-              navigate("/");
+              window.localStorage.setItem("username", name);
+              navigate("/", {replace: true});
           }
           else{
-            alert(res.data)
+            alert(res.data.data)
           }
         })
     }
@@ -24,13 +25,13 @@ const LoginPage = () => {
       <Form className="myForm">
         <h1 className="mytext">Admin Login</h1>
       <Form.Group className="mb-3">
-        <Form.Label className="mytext">Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" id="email"/>
+        <Form.Label className="mytext">Username</Form.Label>
+        <Form.Control type="type" placeholder="Enter your username" id="email"/>
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label className="mytext">Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" id="password" />
+        <Form.Control type="password" placeholder="Enter your password" id="password" />
       </Form.Group>
       <Button variant="primary" type="submit" onClick={handleSubmit}>
         Submit
