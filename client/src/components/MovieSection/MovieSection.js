@@ -29,7 +29,7 @@ const MovieSection = (props) => {
             </div>
             <div className="cardsarea">
                 {arr.map((row)=>{
-                    return <div className="myrow" key = {row}>
+                    return <div className="myrow" key = {row[0]}>
                         {row.map((movie)=>{
                             return <MyCard movie={movie} key = {movie.title}></MyCard>
                         })}

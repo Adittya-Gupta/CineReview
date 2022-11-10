@@ -17,8 +17,8 @@
 }
 
 .section{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     color: white;
     padding-left:15px ;
     font-size: 16px;
@@ -29,4 +29,9 @@
 .section:hover{
     cursor: pointer;
     border-color: #9a3e35;
+}
+
+.active{
+    border-color: #9a3e35;
+    background-color: #444c54;
 }

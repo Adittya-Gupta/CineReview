@@ -20,7 +20,12 @@ const AddMovie = () => {
             image,
             description
         };
-        axios.post("http://localhost:8080/movies/add", movie);
+        axios.post("http://localhost:8080/movies/add", movie).then((res)=>{
+            window.location.href = "/";
+            alert("Movie added successfully");
+        }).catch((err)=>{
+            console.log(err);
+        })
     }
   return (
     <Form className="myForm">
@@ -48,7 +53,8 @@ const AddMovie = () => {
       <option value="9">History</option>
       <option value="10">Horror</option>
       <option value="11">Thriller</option>
-      <option value="12">Western</option>
+      <option value="12">War</option>
+      <option value="13">Western</option>
     </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3">

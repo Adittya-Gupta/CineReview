@@ -3,6 +3,7 @@ import { Nav } from "react-bootstrap";
 import { useEffect, useState } from "react";
 const FilterSection  = (props) => {
     const genres = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Drama", "Family", "Fantasy", "History", "Horror", "Thriller", "War", "Western"];
+    const [active, setActive] = useState("All");
     const [mygenre, setMygenre] = useState("");
     useEffect(()=>{
         props.setSearchgenre(mygenre);
@@ -12,9 +13,9 @@ const FilterSection  = (props) => {
       <div className="title">Filters</div>
       <div className="sections">
       <Nav defaultActiveKey="/" className="flex-column">
-      <div className="section" onClick={()=>setMygenre('')}>All</div>
+      <div className={"section"+(active==="All" ? " active" : "")} onClick={()=>{setMygenre('');setActive("All")}}>All</div>
       {genres.map((genre)=>{
-          return <div key={genre} className="section" onClick={()=>setMygenre(genre)}>{genre}</div>
+          return <div key={genre} className={"section"+(active===genre ? " active" : "")} onClick={()=>{setMygenre(genre);setActive(genre)}}>{genre}</div>
      })}
         </Nav>
       </div>
