@@ -4,8 +4,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import router from "./routes/movies.js";
 import userRouter from "./routes/user.js";
+import dotenv from "dotenv";
 const app = express();
-
+dotenv.config({path : './config.env'});
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
@@ -14,8 +15,8 @@ app.use("/movies", router);
 app.use("/users", userRouter)
 
 const CONNECTION_URL =
-  "mongodb+srv://Adittya:admin12345@cluster0.sren2qd.mongodb.net/?retryWrites=true&w=majority";
-const PORT = 8080;
+  process.env.DB_URI;
+const PORT = process.env.PORT;
 
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
