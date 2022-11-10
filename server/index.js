@@ -6,7 +6,7 @@ import router from "./routes/movies.js";
 import userRouter from "./routes/user.js";
 import dotenv from "dotenv";
 const app = express();
-dotenv.config({path : './config.env'});
+dotenv.config();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
@@ -17,7 +17,6 @@ app.use("/users", userRouter)
 const CONNECTION_URL =
   process.env.DB_URI;
 const PORT = process.env.PORT;
-
 mongoose
   .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() =>
